@@ -44,7 +44,7 @@ import JADClient from 'jadite'
 // the file will be created in this path
 const client = new JADClient('./src/data')
 // this will be the name of the file. all files ends with .db.json
-const db = await client.database('')
+const db = await client.database('generalDB')
 // this will be the collection or the table
 const products = await db.collection('products')
 ```

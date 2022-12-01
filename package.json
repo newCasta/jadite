@@ -1,0 +1,33 @@
+{
+    "name": "jadite",
+    "version": "0.1.0",
+    "description": "Use JSON files as databases",
+    "type": "module",
+    "main": "dist/index.js",
+    "scripts": {
+        "build": "tsc",
+        "format": "prettier --write ."
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/siCasta/jadite.git"
+    },
+    "keywords": [
+        "JSON",
+        "Database",
+        "Files",
+        "JADite"
+    ],
+    "author": "Juan Sebastian Castañeda Burbano",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/siCasta/jadite/issues"
+    },
+    "homepage": "https://github.com/siCasta/jadite#readme",
+    "devDependencies": {
+        "@types/node": "^18.11.10",
+        "prettier": "^2.8.0",
+        "typescript": "^4.9.3"
+    }
+}
+

@@ -1,19 +1,19 @@
 import { existsSync } from 'fs'
-import { mkdir, writeFile } from 'fs/promises'
+import { mkdir, readFile, writeFile } from 'fs/promises'
 import { join } from 'path'
 import JADDatabase from './Database.js'
 
 export default class JADClient {
     #path: string
 
-    static async #createDB(path: string, name: string) {
-        if (!existsSync(path)) {
-            await mkdir(path)
+    async #createDB(path: string, name: string) {
+        const pathFile = join(path, name)
 
-            const pathFile = join(path, name)
+        if (!existsSync(path)) await mkdir(path)
 
-            await writeFile(pathFile, '{}')
-        }
+        const data = await readFile(pathFile, { encoding: 'utf-8' })
+
+        if (!data) await writeFile(pathFile, '{}', { encoding: 'utf-8' })
     }
 
     constructor(path: string) {
@@ -25,7 +25,7 @@ export default class JADClient {
         const filename = `${name}.db.json`
         const filePath = join(path, filename)
 
-        await JADClient.#createDB(path, filename)
+        await this.#createDB(path, filename)
 
         return new JADDatabase(filePath)
     }
